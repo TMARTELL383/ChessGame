@@ -78,9 +78,9 @@ public class BoardComponent extends JComponent implements MouseListener {
         //If it does, display a message to the screen
         //Might have to implement something in the canMove function, or make a separate checkmate function to check
 
-        if(Chess.position[endx][endy].checkMate(startx,starty,endx,endy,true)){
-            JOptionPane.showMessageDialog(null, "White checkmates Black!");
-        }
+//        if(Chess.position[endx][endy].checkMate(startx,starty,endx,endy,true)){
+//            JOptionPane.showMessageDialog(null, "White checkmates Black!");
+//        }
 
 
         //computer's turn
@@ -113,9 +113,9 @@ public class BoardComponent extends JComponent implements MouseListener {
             Chess.position[startx][starty] = null;
             repaint();
 
-            if(Chess.position[endx][endy].checkMate(startx,starty,endx,endy,false)){
-                JOptionPane.showMessageDialog(null, "Black checkmates White!");
-            }
+//            if(Chess.position[endx][endy].checkMate(startx,starty,endx,endy,false)){
+//                JOptionPane.showMessageDialog(null, "Black checkmates White!");
+//            }
 
             break;
         }

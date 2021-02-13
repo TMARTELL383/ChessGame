@@ -3,6 +3,8 @@ import javax.swing.*;
 /*
     TODO_LIST
     TODO: Implement checkmate
+    TODO: Implement a pop-up message telling the user which piece was captured.
+    TODO: Implement highlighted paths of which moves a piece can make when the user does mousePressed (not necessary, just cool)
  */
 
 public class Chess {
