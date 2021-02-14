@@ -31,7 +31,6 @@ public class Pawn extends Piece {
                 //move two spaces up - make sure you don't jump over pieces if moving two spaces up
                 if(starty - 2 >= 0 && endy == starty - 2 && xdist == 0 && Chess.position[startx][starty - 1] == null && Chess.position[startx][starty - 2] == null){
                     firstTurn = false;
-
                     return true;
                 }
             }
@@ -39,12 +38,10 @@ public class Pawn extends Piece {
 
             //white moving forward one space vertically
             if(ydist == -1 && xdist == 0 && Chess.position[endx][endy] == null){ //make sure it's not moving backwards
-
                 return true;
             }
             //top-right diagonal capture
             else if(startx + 1 <= 7 && starty - 1 >= 0 && Chess.position[startx + 1][starty - 1] != null){
-
                 return true;
             }
             //top-left diagonal capture
@@ -58,24 +55,20 @@ public class Pawn extends Piece {
                 //move two spaces up - make sure you don't jump over pieces if moving two spaces up
                 if(starty + 2 <= 7 && endy == starty + 2 && xdist == 0 && Chess.position[startx][starty + 1] == null && Chess.position[startx][starty + 2] == null) {
                     firstTurn = false;
-                    System.out.println("1");
                     return true;
                 }
             }
 
 
             if(ydist == 1 && xdist == 0 && Chess.position[endx][endy] == null){ //make sure it's not moving backwards
-                System.out.println("2");
                 return true;
             }
             //bottom-right diagonal capture
             else if(startx + 1 <= 7 && endx == startx + 1 && starty + 1 <= 7 && endy == starty + 1 && Chess.position[startx + 1][starty + 1] != null) {
-                System.out.println("3");
                 return true;
             }
             //bottom-left diagonal capture
             else if(startx - 1 >= 0 && endx == startx - 1 && starty + 1 <= 7 && endy == starty + 1 && Chess.position[startx - 1][starty + 1] != null) {
-                System.out.println("4");
                 return true;
             }
         }
