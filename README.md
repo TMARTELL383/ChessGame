@@ -13,22 +13,17 @@ BoardComponent:
 
 paintComponent - a necessary method for drawing the underlying board and importing the gif files for each piece to place them on the board.
 
-mousePressed - since this boardComponent extends the JComponent class, this method along with the other four methods listed below are necessary. All the action happens
-in mouseReleased, but here, when the user pressed their mouse down, the x and y positions are stored with the values being between 0 and 7, the values that represent the
-positions on the 8x8 chess board
+mousePressed - since this boardComponent extends the JComponent class, this method along with the other four methods listed below are necessary. All the action happens in mouseReleased, but here, when the user presses their mouse down, the x and y positions are stored with the values being between 0 and 7, the values that represent the positions on the 8x8 chess board
 
 mouseReleased - this method gets us the position of the user's mouse when released, similar to mousePressed. A variety of conditions are checked, such as:
-  1) Are the mousePressed and mouseReleased (start and end) positions outside the bounds of 0 and 7? If so, don't make the move.
+  1) Are the mousePressed and mouseReleased (start and end) positions outside the bounds of 0 and 7 (the board)? If so, don't make the move.
   2) Is the piece the user is trying to move a white piece? They cannot move their own piece, so don't make the move.
   3) Is the user trying to move a piece that isn't there (a null place on the board)? If so, don't make the move.
   4) Call a canMove function that checks if the piece the user is trying to move can actually be moved. If it is an invalid move, don't make the move. For example,
      if the user tries to move a pawn forward 4 spaces, that is an invalid move, so this check will stop them from doing that.
   5) Is the piece the user is capturing the opponent's king (black)? If so, capture it, display a message that white has won, and exit the game.
 
-If the user gets through all these checks, then their white piece will replace a captured black piece on the board and our BoardComponent will repaint. Then, it is the
-computer's turn. This computer "A.I." randomly chooses starting and ending positions with numbers from 0 to 7. It goes through all the checks again and determines if 
-it can make that move. All of this is wrapped in a while loop that will forever run until the computer eventually makes a valid move. If the computer happens to choose
-a move that captures a white piece, that white piece will be replaced with the incoming black piece and the while loop will break.
+If the user gets through all these checks, then their white piece will move, replace a captured black piece on the board if necessary, and our BoardComponent will repaint. Then, it is the computer's turn. This computer "A.I." randomly chooses starting and ending positions with numbers from 0 to 7. It goes through all the checks again and determines if it can make that move. All of this is wrapped in a while loop that will forever run until the computer eventually makes a valid move. If the computer happens to choose a move that captures a white piece, that white piece will be replaced with the incoming black piece and the while loop will break.
 
 mouseClicked, mouseEntered, mouseExited - nothing in these functions, but necessary to have if we're having our class extend JComponent.
 
@@ -36,9 +31,7 @@ mouseClicked, mouseEntered, mouseExited - nothing in these functions, but necess
 
 Piece & its subclasses:
 
-The constructor of the Piece class initializes two important variables: isWhite and isKing. isWhite is determined from a boolean passed in when the piece is originally
-created (in the Chess class). isKing will be false for all pieces except for, of course, the King class. It is used to check whether a piece being captured in
-BoardComponent is a king or not.
+The constructor of the Piece class initializes two important variables: isWhite and isKing. isWhite is determined from a boolean passed in when the piece is originally created (in the Chess class). isKing will be false for all pieces except for, of course, objects of the King class. It is used to check whether a piece being captured in BoardComponent is a king or not.
 
 drawPiece is a function written only in the Piece class, but it is shared with all its subclasses. There is no need to specifically modify it for the other classes,
 so it is left the same. This simply grabs the gif image for the specific piece and draws it in an x,y position on the board. The canMove method varies with each piece,
