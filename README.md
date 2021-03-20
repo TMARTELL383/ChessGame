@@ -34,17 +34,12 @@ Piece & its subclasses:
 The constructor of the Piece class initializes two important variables: isWhite and isKing. isWhite is determined from a boolean passed in when the piece is originally created (in the Chess class). isKing will be false for all pieces except for, of course, objects of the King class. It is used to check whether a piece being captured in BoardComponent is a king or not.
 
 drawPiece is a function written only in the Piece class, but it is shared with all its subclasses. There is no need to specifically modify it for the other classes,
-so it is left the same. This simply grabs the gif image for the specific piece and draws it in an x,y position on the board. The canMove method varies with each piece,
-as well as the checkMate function, however, the checkMate function is not yet complete and needs some work.
+so it is left the same. This simply grabs the gif image for the specific piece and draws it in an x,y position on the board. The canMove method varies with each piece, as well as the checkMate function, however, the checkMate function is not yet complete and needs some work.
 
 Pawn canMove - This is probably the hardest function to write because pawns have so many unique situations for moving on the board. If there only purpose is to move 
-forward to an empty space, they can only move straight, not diagonally. However, if there intention with a move is to capture a piece, they can only do so diagonally 
-and never moving straight forward. For their very first move of the game, they can move forward one OR two spaces, so that must be accounted for as well.
+forward to an empty space, they can only move straight, not diagonally. However, if their intention with a move is to capture a piece, they can only do so diagonally. For their very first move of the game, they can move forward one OR two spaces, so that must be accounted for as well.
 
-FIRST MOVE / MOVING FORWARD == I made a class specific instance variable named firstTurn which was set to true initially for every piece. When the canMove method for
-a pawn is called, the program will check to see if this boolean is true or false. If it is true and the pawn's end position is two y spaces away from its start position
-(depending on the piece of course - if the piece is white, we're moving up in the -y direction, but if it is black, we're moving down in the +y direction), then it will
-return that as a valid move. One space moving forward (if that is chosen over the two spaces) will be a valid move as well.
+FIRST MOVE / MOVING FORWARD == I made a class specific instance variable named firstTurn which was set to true initially for every Pawn piece. When the canMove method for a pawn is called, the program will check to see if this boolean is true or false. If it is true and the pawn's end position is two y spaces away from its start position (depending on the piece of course - if the piece is white, we're moving up in the -y direction (up), but if it is black, we're moving down in the +y direction (down)), then it will return that as a valid move. One space moving forward (if that is chosen over the two spaces) will be a valid move as well.
 
 MOVING FOWARD W/O FIRST TURN == If the firstTurn variable happens to be false, then program will check to see if the pawn can move one space forward. It is important
 to make sure that if the pawn wants to move forward one space, that space must be null and not contain either the player's own piece or the opponent's piece.
@@ -56,14 +51,10 @@ These methods are applied to both white AND black pieces in separate cases.
 
 
 
-Knight canMove - The knight moves in an L-shape, so in order to move either it has to move two spaces in the x direction and one space in the y direction OR it has to
-move one space in the x direction and two spaces in the y direction. A very simple canMove method - much easier than pawn's.
+Knight canMove - The knight moves in an L-shape, so in order to move, either it has to move two spaces in the x direction and one space in the y direction OR it has to move one space in the x direction and two spaces in the y direction. A very simple canMove method - much easier than pawn's.
 
 Rook canMove - Rooks can move in the x and y plane, but never both at the same time. It can also move any number of spaces it wants provided that there are no other
-pieces in its path when moving. To create this canMove method, we need to first create four for loops to check if there are any pieces in the rook's path when it wants
-to move (depending on WHERE it wants to move of course). If it turns out that there is a piece in the way, this method will return a false and the move cannot be made.
-If there is no return false, it will check either two things: 1) Are we moving in the x-direction and NOT the y-direction?, or 2) Are we moving in the y-direction and
-NOT the x-direction. If either of these conditions are true, then the move can be made and this method will return true.
+pieces in its path when moving. To create this canMove method, we need to first create four for loops to check if there are any pieces in the rook's path when it wants to move (depending on WHERE it wants to move of course). If it turns out that there is a piece in the way, this method will return a false and the move cannot be made. If there is no return false, it will check either two things: 1) Are we moving in the x-direction and NOT the y-direction?, or 2) Are we moving in the y-direction and NOT the x-direction. If either of these conditions are true, then the move can be made and this method will return true.
 
 Bishop canMove - Bishop is very similar to Rook's canMove except we are moving diagonally instead of straight. The for loops will alter slightly, but are still
 necessary. To check if the bishop is attempting to make a valid move, the distance moved in the x-direction must be equal to the distance moved in the y-direction.
@@ -76,14 +67,4 @@ King canMove - A simple method - a king can move in any direction one space. So,
 less than or equal to one.
 
 
-More methods might come up later when I start adding more stuff, but this is it for now.
-
-
-
-
-
-
-
-
-
-
+More methods might come up later when I start adding more stuff, but this is it for now. For the future, I'd like to make the A.I. more intelligent like checking 1-2 moves ahead and basing its moves off that.
